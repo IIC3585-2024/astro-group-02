@@ -6,6 +6,9 @@ const Header = () => {
         <header>
             <h1>Recomendaciones Quiroz</h1>
             <div className="header-buttons">
+                <a href="/">
+                    <button className="header-button">Ver<br></br>Series</button>
+                </a>
                 <a href="/add-serie">
                     <button className="header-button">Agregar<br></br>Serie</button>
                 </a>

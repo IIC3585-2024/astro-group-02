@@ -21,7 +21,10 @@ h1 {
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, transform 0.3s, border-color 0.3s;
 }
-
+.header-buttons{
+    display: flex;
+    gap: 1rem;
+}
 
 
 .header-button:hover {
