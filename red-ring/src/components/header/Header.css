@@ -1,0 +1,33 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #121212;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 2);
+}
+
+h1 {
+    color: white;
+}
+
+
+.header-button {
+    background-color: #121212;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s, border-color 0.3s;
+}
+
+
+
+.header-button:hover {
+    transform: scale(1.05)
+}
+
+.header-button:active {
+    transform: scale(1);
+}

@@ -2,12 +2,14 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import MyRecomendations from "../components/recomendations/MyRecomedations";
+import Header from "../components/header/Header";
 const data = Astro.locals;
 ---
 
 <Layout title="Welcome to Astro.">
+    <Header />
     <main>
-        <MyRecomendations client:load/>
+        <MyRecomendations client:load />
         <!-- {userEmail ? <p>Logged in as {userEmail}</p> : <p>Not logged in</p>} -->
     </main>
 </Layout>
@@ -15,8 +17,8 @@ const data = Astro.locals;
 <style>
     main {
         margin: auto;
-        padding: 1rem;
-        width: 800px;
+        padding: 0rem 1 rem 1rem 1rem;
+        /* width: 800px; */
         max-width: calc(100% - 2rem);
         color: white;
         font-size: 20px;

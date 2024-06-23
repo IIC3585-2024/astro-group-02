@@ -9,7 +9,7 @@ const Series = ({ serie }) => {
             <h3>{serie.nombre}</h3>
             <p>Servicio de Streaming: {serie.servicio}</p>
             <p>Temporadas: {serie.temporadas}</p>
-            <p>Episodios por Temporada: {serie.episodiosPorTemporada}</p>
+            <p>Episodios por Temporada: {serie.episodiosPorTemporada.join('-')}</p>
             <p>Descripción: {serie.descripcion}</p>
             <p>Categoría: {serie.categoria}</p>
             <p>Estrellas: {serie.promedioEstrellas.toFixed(1)} ({serie.numCalificaciones})</p>

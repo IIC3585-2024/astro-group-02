@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/Layout.astro";
+const data = Astro.locals;
+---
+
+<Layout title="Logout">
+
+</Layout>
+
+<script>
+    import { actions } from "astro:actions";
+    import { isInputError } from "astro:actions";
+    async function logout() {
+        const { error, data } = await actions.logoutAccount.safe({});
+        if (error) {
+            console.error(error);
+            if (isInputError(error)) {
+                console.log(error.fields);
+            }
+            return;
+        }
+        window.location.reload();
+    }
+    logout();
+</script>

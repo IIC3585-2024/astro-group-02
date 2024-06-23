@@ -1,43 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+import MyRecomendations from "../components/recomendations/MyRecomedations";
+import Header from "../components/header/Header";
 const data = Astro.locals;
 ---
 
 <Layout title="Welcome to Astro.">
+	<Header />
 	<main>
-		<h1>Holaa</h1>
-		{
-			data.userEmail ? (
-				<p>Logged in as {data.userEmail}</p>
-			) : (
-				<p>Not logged in</p>
-			)
-		}
-
-		<form id="logout-form">
-			<button type="submit">Logout</button>
-		</form>
-		<script>
-			import { actions } from "astro:actions";
-			import { isInputError } from "astro:actions";
-			const logout = document.querySelector(
-				"#logout-form",
-			) as HTMLFormElement;
-			logout.addEventListener("submit", async (event) => {
-				event.preventDefault();
-				const { error, data } = await actions.logoutAccount.safe({}
-				);
-				if (error) {
-					console.error(error);
-					if (isInputError(error)) {
-						console.log(error.fields);
-					}
-					return;
-				}
-				window.location.reload();
-			});
-		</script>
+		<MyRecomendations client:load />
 		<!-- {userEmail ? <p>Logged in as {userEmail}</p> : <p>Not logged in</p>} -->
 	</main>
 </Layout>
@@ -45,8 +17,8 @@ const data = Astro.locals;
 <style>
 	main {
 		margin: auto;
-		padding: 1rem;
-		width: 800px;
+		padding: 0rem 1 rem 1rem 1rem;
+		/* width: 800px; */
 		max-width: calc(100% - 2rem);
 		color: white;
 		font-size: 20px;
