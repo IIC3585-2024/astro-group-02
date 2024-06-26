@@ -28,6 +28,7 @@ const NewSerie = () => {
         };
         const docRef = collection(db, "visualmaniaDB")
         await addDoc(docRef, movieData);
+        window.location.replace('/');
     };
     return (
         <form className="serie-form" onSubmit={handleSubmit}>
@@ -93,6 +94,7 @@ const NewSerie = () => {
                     <option value="Comedy">Comedia</option>
                     <option value="Fantasy">Fantasía</option>
                     <option value="Documentary">Documental</option>
+                    <option value="Other">Otro</option>
                 </select>
             </div>
 

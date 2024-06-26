@@ -48,6 +48,7 @@ const ReviewSection = ({email}) => {
             <ul>
                 {reviews.map((review, index) => (
                     <li key={index}>
+                        <p><strong>{review.email}</strong> </p>
                         <p><strong>Review:</strong> {review.reviewText}</p>
                         <p><strong>Rating:</strong> {review.rating}/10</p>
                     </li>

@@ -22,6 +22,7 @@ const Filter = ({ category, setCategory, service, setService, stars, setStars })
                 <option value="Comedy">Comedia</option>
                 <option value="Action">Accion</option>
                 <option value="Documentary">Documental</option>
+                <option value="Other">Otro</option>
             </select>
             <label htmlFor="filter">Filtrar por minimo de estrellas</label>
             <select name="filter" id="filter" value={stars} onChange={(e) => setStars(e.target.value)}>

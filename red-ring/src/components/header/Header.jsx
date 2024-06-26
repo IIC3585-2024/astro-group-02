@@ -4,7 +4,7 @@ import './Header.css';
 const Header = () => {
     return (
         <header>
-            <h1>Recomendaciones Quiroz</h1>
+            <h1>Watch Series</h1>
             <div className="header-buttons">
                 <a href="/">
                     <button className="header-button">Ver<br></br>Series</button>

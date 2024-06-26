@@ -21,10 +21,10 @@ const MyRecomendations = () => {
     const filterSeries = () => {
         let filteredSeries = series;
         if (category !== 'all') {
-            filteredSeries = filteredSeries.filter((serie) => serie.categoria.includes(category));
+            filteredSeries = filteredSeries.filter((serie) => serie.category.includes(category));
         }
         if (service !== 'all') {
-            filteredSeries = filteredSeries.filter((serie) => serie.servicio === service);
+            filteredSeries = filteredSeries.filter((serie) => serie.service === service);
         }
         if (stars > 0) {
             filteredSeries = filteredSeries.filter((serie) => serie.promedioEstrellas >= stars);
@@ -62,27 +62,13 @@ const MyRecomendations = () => {
 
 
     useEffect(() => {
-        // const seriesData = [
-        //     {
-        //         id: 1,
-        //         nombre: 'Yerko Series',
-        //         servicio: 'Netflix',
-        //         temporadas: 5,
-        //         episodiosPorTemporada: '8-9-8-8',
-        //         descripcion: 'A group of kids deals with supernatural events in their small town.',
-        //         categoria: 'Drama, Fantasy, Horror',
-        //         promedioEstrellas: 8.7,
-        //         numCalificaciones: 250
-        //     }
-        // ];
         getSeries();
     }
         , [])
 
     return (
         <div className='movie-recommendation'>
-            <p>Estas son las recomendaciones de películas que hemos seleccionado para ti.</p>
-
+            <p>Bienvenido a nuestra plataforma.</p>
             <Filter 
                 category={category} setCategory={setCategory}
                 service={service} setService={setService}
