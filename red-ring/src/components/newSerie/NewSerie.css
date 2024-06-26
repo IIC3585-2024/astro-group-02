@@ -55,3 +55,7 @@
 .serie-form button:hover {
     background-color: #fbc02d;
 }
+
+.multiselect {
+    all: unset;
+}

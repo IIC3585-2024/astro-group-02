@@ -23,3 +23,12 @@
     font-size: 1em;
     color: #555;
 }
+
+.redirect {
+
+        display: block;
+        text-decoration: none;
+        color: yellow;
+        /* padding-bottom: 15px */
+    
+}

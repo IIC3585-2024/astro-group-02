@@ -7,6 +7,9 @@ import Series from '../serie/Series';
 import Filter from '../filters/Filter';
 import Header from '../header/Header';
 import { set } from 'firebase/database';
+import { getFirestore, collection, getDocs, doc, addDoc } from "firebase/firestore";
+import cong from "../../firebase/configuration";
+
 
 const MyRecomendations = () => {
     const [series, setSeries] = useState([]);
@@ -33,77 +36,46 @@ const MyRecomendations = () => {
         filterSeries();
     }, [category, service, stars]);
 
+    const getSeries = async () => {
+        const db = getFirestore(cong);
+        const snapshot = await getDocs(collection(db, "visualmaniaDB"));
+        let series = snapshot.docs.map(doc => doc.data());
+        series = calculateStars(series);
+        setSeries(series);
+        setSeriesFiltered(series);
+    };
+
+    const calculateStars = (series) => {
+        let id = 0;
+        series.forEach(serie => {
+            serie.id = id++;
+            let totalStars = 0;
+            serie.reviews.forEach(review => {
+                totalStars += review.rating;
+            });
+            serie.promedioEstrellas = totalStars / serie.reviews.length || 0;
+            serie.numCalificaciones = serie.reviews.length;
+        });
+        return series;
+    }
+
+
+
     useEffect(() => {
-        const seriesData = [
-            {
-                id: 1,
-                nombre: 'Yerko Series',
-                servicio: 'Netflix',
-                temporadas: 5,
-                episodiosPorTemporada: '8-9-8-8',
-                descripcion: 'A group of kids deals with supernatural events in their small town.',
-                categoria: 'Drama, Fantasy, Horror',
-                promedioEstrellas: 8.7,
-                numCalificaciones: 250
-            },
-            {
-                id: 2,
-                nombre: 'Yerko Series',
-                servicio: 'Amazon Prime',
-                temporadas: 5,
-                episodiosPorTemporada: '8-9-8-8',
-                descripcion: 'A group of kids deals with supernatural events in their small town.',
-                categoria: 'Drama, Fantasy, Horror',
-                promedioEstrellas: 8.7,
-                numCalificaciones: 250
-            },
-                        {
-                id: 3,
-                nombre: 'Yerko Series',
-                servicio: 'Disney Plus',
-                temporadas: 5,
-                episodiosPorTemporada: '8-9-8-8',
-                descripcion: 'A group of kids deals with supernatural events in their small town.',
-                categoria: 'Drama, Fantasy, Horror',
-                promedioEstrellas: 8.7,
-                numCalificaciones: 250
-            },
-            {
-                id: 4,
-                nombre: 'Yerko Series',
-                servicio: 'Netflix',
-                temporadas: 5,
-                episodiosPorTemporada: '8-9-8-8',
-                descripcion: 'A group of kids deals with supernatural events in their small town.',
-                categoria: 'Drama, Fantasy, Horror',
-                promedioEstrellas: 8.7,
-                numCalificaciones: 250
-            },
-            {
-                id: 5,
-                nombre: 'Yerko Series',
-                servicio: 'Netflix',
-                temporadas: 5,
-                episodiosPorTemporada: '8-9-8-8',
-                descripcion: 'A group of kids deals with supernatural events in their small town.',
-                categoria: 'Drama, Fantasy, Horror',
-                promedioEstrellas: 8.7,
-                numCalificaciones: 250
-            }, {
-                id: 6,
-                nombre: 'Yerko Series',
-                servicio: 'Netflix',
-                temporadas: 5,
-                episodiosPorTemporada: '8-9-8-8',
-                descripcion: 'A group of kids deals with supernatural events in their small town.',
-                categoria: 'Drama, Fantasy, Horror',
-                promedioEstrellas: 8.7,
-                numCalificaciones: 250
-            },
-            // Agrega más series según sea necesario
-        ];
-        setSeries(seriesData);
-        setSeriesFiltered(seriesData);
+        // const seriesData = [
+        //     {
+        //         id: 1,
+        //         nombre: 'Yerko Series',
+        //         servicio: 'Netflix',
+        //         temporadas: 5,
+        //         episodiosPorTemporada: '8-9-8-8',
+        //         descripcion: 'A group of kids deals with supernatural events in their small town.',
+        //         categoria: 'Drama, Fantasy, Horror',
+        //         promedioEstrellas: 8.7,
+        //         numCalificaciones: 250
+        //     }
+        // ];
+        getSeries();
     }
         , [])
 
@@ -118,7 +90,7 @@ const MyRecomendations = () => {
             />
             <div className="movie-board">
                 {seriesFiltered.map((serie, index) => (
-                    <Series  serie={serie}/>
+                    <Series serie={serie} key={index}/>
                 ))}
             </div>
             {(seriesFiltered.length <= 0) && (

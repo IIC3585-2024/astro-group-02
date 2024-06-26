@@ -30,16 +30,12 @@ import Input from "../components/Input.astro";
 			const loginForm = document.querySelector(
 				"#form-login-user",
 			) as HTMLFormElement;
-			console.log(loginForm);
 			loginForm.addEventListener("submit", async (event) => {
 				event.preventDefault();
-				console.log(loginForm);
-				console.log("submit");
 				const { error, data } = await actions.loginAccount.safe(
 					new FormData(loginForm),
 				);
 				if (error) {
-					// console.log(error.name);
 					alert(error.message.split("\n")[0]	);
 					if (isInputError(error)) {
 						console.log(error.fields);
