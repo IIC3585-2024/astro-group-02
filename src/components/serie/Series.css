@@ -1,0 +1,34 @@
+/* src/components/Movie.css */
+.movie {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    width: 25%;
+    
+}
+
+.movie-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.movie-title {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.movie-rating {
+    font-size: 1em;
+    color: #555;
+}
+
+.redirect {
+
+        display: block;
+        text-decoration: none;
+        color: yellow;
+        /* padding-bottom: 15px */
+    
+}

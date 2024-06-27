@@ -1,0 +1,61 @@
+.serie-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #222;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.serie-form div {
+    display: flex;
+    flex-direction: column;
+}
+
+.serie-form label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: yellow;
+    margin-bottom: 0.5rem;
+}
+
+.serie-form input,
+.serie-form select,
+.serie-form textarea {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: border-color 0.3s;
+}
+
+.serie-form input:focus,
+.serie-form select:focus,
+.serie-form textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.serie-form button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: #000;
+    background-color: #ffeb3b;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.serie-form button:hover {
+    background-color: #fbc02d;
+}
+
+.multiselect {
+    all: unset;
+}

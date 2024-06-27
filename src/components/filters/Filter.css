@@ -1,0 +1,33 @@
+.movie-filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color:#222;
+    opacity: 0.;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.movie-filter label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: yellow;
+    margin-bottom: 0.5rem;
+}
+
+.movie-filter select {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: border-color 0.3s;
+}
+
+.movie-filter select:focus {
+    border-color: #007bff;
+    outline: none;
+}
