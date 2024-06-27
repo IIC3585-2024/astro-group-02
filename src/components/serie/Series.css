@@ -5,7 +5,12 @@
     padding: 10px;
     text-align: center;
     width: 25%;
-    
+}
+
+@media (max-width: 768px) {
+    .movie {
+        width: 90%;
+    }
 }
 
 .movie-image {
