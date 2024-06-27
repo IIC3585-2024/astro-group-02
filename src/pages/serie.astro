@@ -1,42 +1,42 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import NewSerie from "../components/newSerie/NewSerie";
 import Header from "../components/header/Header";
 import SerieBox from "../components/serieBox/SerieBox";
 import ReviewSection from "../components/reviewSection/ReviewSection";
 import cong from "../firebase/configuration";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 
-const data = Astro.locals;
-let serie = [
-    {
-        id: 2,
-        nombre: "Yerko Series",
-        servicio: "Amazon Prime",
-        temporadas: 5,
-        episodiosPorTemporada: "8-9-8-8",
-        descripcion:
-            "A group of kids deals with supernatural events in their small town.",
-        categoria: "Drama, Fantasy, Horror",
-        promedioEstrellas: 8.7,
-        numCalificaciones: 250,
-    },
-];
 
-const getSeries = async () => {
+const id = Astro.url.searchParams.get('id');
+const data = Astro.locals;
+
+const getSerie = async () => {
     const db = getFirestore(cong);
     const snapshot = await getDocs(collection(db, "visualmaniaDB"));
-    return snapshot.docs.map((doc) => doc.data());
+    let series = snapshot.docs.map(doc => doc.data());
+    let serie = series[id];
+    serie = calculateStars(serie);
+    return serie;
 };
 
-const series = getSeries();
-let wave = "Hola";
+const calculateStars = (serie) => {
+    let totalStars = 0;
+    serie.reviews.forEach(review => {
+        totalStars += review.rating;
+    });
+    serie.promedioEstrellas = totalStars / serie.reviews.length || 0;
+    serie.numCalificaciones = serie.reviews.length;
+    return serie;
+}
+
+const serie = await getSerie();
+
 ---
 
 <Layout title="Welcome to Astro.">
     <Header />
     <main>
-        <SerieBox client:load />
+        <SerieBox serie={serie} client:load />
         <ReviewSection email={data.userEmail} client:load />
     </main>
 </Layout>

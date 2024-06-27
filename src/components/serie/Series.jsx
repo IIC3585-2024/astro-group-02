@@ -1,4 +1,3 @@
-import React from 'react';
 import './Series.css';
 
 const Series = ({ serie }) => {

@@ -1,13 +1,11 @@
 // src/components/MovieRecommendation.js
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './myRecomendations.css';
 import './MovieRecommendation.css';
 import Series from '../serie/Series';
 import Filter from '../filters/Filter';
-import Header from '../header/Header';
-import { set } from 'firebase/database';
-import { getFirestore, collection, getDocs, doc, addDoc } from "firebase/firestore";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 import cong from "../../firebase/configuration";
 
 

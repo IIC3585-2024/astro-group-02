@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
 import MyRecomendations from "../components/recomendations/MyRecomedations";
 import Header from "../components/header/Header";
 const data = Astro.locals;
@@ -10,7 +9,6 @@ const data = Astro.locals;
 	<Header />
 	<main>
 		<MyRecomendations client:load />
-		<!-- {userEmail ? <p>Logged in as {userEmail}</p> : <p>Not logged in</p>} -->
 	</main>
 </Layout>
 
