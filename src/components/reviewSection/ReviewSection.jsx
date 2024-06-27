@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ReviewForm from '../reviewForm/ReviewForm';
 import './reviewSection.css';
 import { getFirestore, collection, getDocs, doc, updateDoc } from "firebase/firestore";
-import cong from "../../firebase/configuration";
+import app from "../../firebase/config.ts";
 
 const ReviewSection = ({email}) => {
     const [reviews, setReviews] = useState([]);
     
-    const db = getFirestore(cong);
+    const db = getFirestore(app);
 
     const handleReviewSubmit = async (review) => {
         const snapshot = await getDocs(collection(db, "visualmaniaDB"));

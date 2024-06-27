@@ -1,12 +1,10 @@
-// src/components/MovieRecommendation.js
-
 import { useEffect, useState } from 'react';
 import './myRecomendations.css';
 import './MovieRecommendation.css';
 import Series from '../serie/Series';
 import Filter from '../filters/Filter';
 import { getFirestore, collection, getDocs } from "firebase/firestore";
-import cong from "../../firebase/configuration";
+import app from "../../firebase/config";
 
 
 const MyRecomendations = () => {
@@ -35,7 +33,7 @@ const MyRecomendations = () => {
     }, [category, service, stars]);
 
     const getSeries = async () => {
-        const db = getFirestore(cong);
+        const db = getFirestore(app);
         const snapshot = await getDocs(collection(db, "visualmaniaDB"));
         let series = snapshot.docs.map(doc => doc.data());
         series = calculateStars(series);
@@ -66,7 +64,7 @@ const MyRecomendations = () => {
 
     return (
         <div className='movie-recommendation'>
-            <p>Bienvenido a nuestra plataforma.</p>
+            <p>Bienvenido!</p>
             <Filter 
                 category={category} setCategory={setCategory}
                 service={service} setService={setService}
@@ -78,7 +76,7 @@ const MyRecomendations = () => {
                 ))}
             </div>
             {(seriesFiltered.length <= 0) && (
-                <h2 className="movie-board-title">No Existen Recomendaciones</h2>
+                <h2 className="movie-board-title">No hay series disponibles</h2>
             )
             }
         </div>

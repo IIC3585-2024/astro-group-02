@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './NewSerie.css';
-
-
-import cong from "../../firebase/configuration"; // Assuming the correct path to your configuration file
-import { getDatabase, ref, onValue } from "firebase/database";
-import { getFirestore, collection, getDocs, doc, addDoc } from "firebase/firestore";
+import app from "../../firebase/config";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 const NewSerie = () => {
     const [name, setName] = useState('');
@@ -13,7 +10,7 @@ const NewSerie = () => {
     const [episodes, setEpisodes] = useState('');
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('Action');
-    const db = getFirestore(cong);
+    const db = getFirestore(app);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

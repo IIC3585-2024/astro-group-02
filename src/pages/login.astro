@@ -2,9 +2,10 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Login">
+<Layout title="Login to Watch Series">
 	<main class="create-user">
-		<h1>Iniciar Sesión</h1>
+		<h1>WatchSeries</h1>
+		<h3>Las mejores recomendaciones de tus series favoritas</h3>
 		<p>
 			¡Bienvenido! Por favor, completa el siguiente formulario para
 			iniciar sesión.
@@ -23,7 +24,6 @@ import Layout from "../layouts/Layout.astro";
 		<script>
 			import { actions } from "astro:actions";
 			import { isInputError } from "astro:actions";
-			// const loginForm = document.("#form-login-user") as HTMLFormElement;
 			const loginForm = document.querySelector(
 				"#form-login-user",
 			) as HTMLFormElement;

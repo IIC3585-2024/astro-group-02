@@ -2,10 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import MyRecomendations from "../components/recomendations/MyRecomedations";
 import Header from "../components/header/Header";
-const data = Astro.locals;
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Watch Series">
 	<Header />
 	<main>
 		<MyRecomendations client:load />

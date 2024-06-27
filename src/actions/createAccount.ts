@@ -1,5 +1,4 @@
 import { defineAction, z } from "astro:actions";
-// import { z } from "astro:content";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { projectAuth } from "../firebase/config";
 

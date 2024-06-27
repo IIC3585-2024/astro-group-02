@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Login">
+<Layout title="Sign Up">
 	<main class="create-user">
 		<h1>Crear una Cuenta</h1>
 		<p>
@@ -20,7 +20,6 @@ import Layout from "../layouts/Layout.astro";
 		<script>
 			import { actions } from "astro:actions";
 			import { isInputError } from "astro:actions";
-			// const createForm = document.("#form-create-user") as HTMLFormElement;
 			const createForm = document.querySelector(
 				"#form-create-user",
 			) as HTMLFormElement;

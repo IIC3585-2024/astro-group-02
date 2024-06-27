@@ -2,11 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import NewSerie from "../components/newSerie/NewSerie";
 import Header from "../components/header/Header";
-
-const data = Astro.locals;
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Watch Series">
     <Header />
     <main>
         <NewSerie client:load />

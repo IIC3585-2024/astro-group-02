@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/header/Header";
 import SerieBox from "../components/serieBox/SerieBox";
 import ReviewSection from "../components/reviewSection/ReviewSection";
-import cong from "../firebase/configuration";
+import app from "../firebase/config";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 
@@ -11,7 +11,7 @@ const id = Astro.url.searchParams.get('id');
 const data = Astro.locals;
 
 const getSerie = async () => {
-    const db = getFirestore(cong);
+    const db = getFirestore(app);
     const snapshot = await getDocs(collection(db, "visualmaniaDB"));
     let series = snapshot.docs.map(doc => doc.data());
     let serie = series[id];
@@ -33,7 +33,7 @@ const serie = await getSerie();
 
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Watch Series">
     <Header />
     <main>
         <SerieBox serie={serie} client:load />
